@@ -12,6 +12,7 @@ process.env.II_URL = process.env.II_URL || ii_url;
 
 export default defineConfig({
   logLevel: "error",
+  base: "/studyverse/",
   define: {
     global: "globalThis",
   },

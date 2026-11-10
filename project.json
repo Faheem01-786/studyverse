@@ -1,0 +1,28 @@
+{
+  "overview": "STUDYVERSE is a gamified student productivity platform where learners track study sessions, earn XP, complete daily quests, unlock rewards and climb leaderboards.",
+  "features": [
+    "Sign in with Internet Identity and keep a personal profile with XP, level, streak and study history",
+    "Student dashboard with XP progress, daily goal, study time today, weekly statistics, quests and recent achievements",
+    "Study room with a customizable timer, subject selection, session history and daily and weekly reports",
+    "Server-verified XP rewards for study sessions, with duplicate rewards and timer manipulation prevented",
+    "Daily quests that refresh each day with progress bars and claimable XP rewards",
+    "XP store for badges, avatars, profile frames, resources and dashboard customization with purchase history",
+    "Three membership plans with XP multipliers, expiry dates and payment verification",
+    "Theme store with seven looks, instant preview and apply, and premium themes for Ultimate members",
+    "Searchable study library with class, board and subject filters, an in-app PDF viewer and downloads",
+    "Website Hub of educational site shortcuts that open in a new tab",
+    "Global, weekly, monthly and friends leaderboards with avatars, levels and XP",
+    "Six unlockable achievement badges driven by real activity",
+    "Secure admin dashboard for students, materials, quests, store items, themes, memberships, website links and analytics",
+    "Light and dark mode with sidebar navigation on desktop and mobile navigation on the go"
+  ],
+  "category": "education",
+  "tags": [
+    "education",
+    "productivity",
+    "gamification",
+    "study-tracker",
+    "student"
+  ],
+  "last_updated": "2026-11-10T15:34:42.403Z"
+}

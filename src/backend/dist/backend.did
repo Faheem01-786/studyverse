@@ -1,0 +1,495 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type Xp = nat;
+type WeekKey = text;
+type WebsiteLink = 
+ record {
+   category: text;
+   createdAt: Timestamp;
+   description: text;
+   id: Id;
+   name: text;
+   url: text;
+ };
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserId = principal;
+type Timestamp = int;
+type ThemeView = 
+ record {
+   applied: bool;
+   theme: Theme;
+   unlocked: bool;
+ };
+type Theme = 
+ record {
+   createdAt: Timestamp;
+   cssVariables: text;
+   description: text;
+   id: Id;
+   name: text;
+   premium: bool;
+ };
+type Subscription = 
+ record {
+   expiresAt: opt Timestamp;
+   owner: UserId;
+   paymentReference: opt text;
+   startedAt: opt Timestamp;
+   status: PaymentStatus;
+   tier: PlanTier;
+ };
+type StudySessionView = 
+ record {
+   accumulatedSeconds: nat;
+   finishedAt: opt Timestamp;
+   id: Id;
+   rewardedXp: opt Xp;
+   startedAt: Timestamp;
+   status: SessionStatus;
+   subject: text;
+ };
+type StudyReport = 
+ record {
+   bySubject: vec record {
+                    text;
+                    nat;
+                  };
+   sessionCount: nat;
+   totalMinutes: nat;
+   totalXp: Xp;
+ };
+type StudyGoal = 
+ record {
+   currentStreakDays: nat;
+   dailyGoalMinutes: nat;
+   lastStudyDay: opt DayKey;
+   longestStreakDays: nat;
+ };
+type StudentSummary = 
+ record {
+   createdAt: Timestamp;
+   displayName: text;
+   id: UserId;
+   level: Level;
+   membershipTier: opt text;
+   username: text;
+   xp: Xp;
+ };
+type StoreItemView = 
+ record {
+   item: StoreItem;
+   owned: bool;
+ };
+type StoreItemKind = 
+ variant {
+   avatar;
+   badge;
+   dashboardTheme;
+   digitalReward;
+   frame;
+   resource;
+ };
+type StoreItem = 
+ record {
+   active: bool;
+   createdAt: Timestamp;
+   description: text;
+   id: Id;
+   kind: StoreItemKind;
+   name: text;
+   xpPrice: Xp;
+ };
+type SessionStatus = 
+ variant {
+   finished;
+   paused;
+   running;
+ };
+type Rupees = nat;
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type ResourceView = 
+ record {
+   board: text;
+   category: text;
+   classLevel: text;
+   createdAt: Timestamp;
+   description: text;
+   downloadCount: nat;
+   file: ExternalBlob;
+   fileName: text;
+   id: Id;
+   subject: text;
+   title: text;
+ };
+type ResourceFilter = 
+ record {
+   board: opt text;
+   category: opt text;
+   classLevel: opt text;
+   searchTerm: opt text;
+   subject: opt text;
+ };
+type QuestView = 
+ record {
+   claimed: bool;
+   completed: bool;
+   progress: nat;
+   quest: Quest;
+   target: nat;
+ };
+type QuestGoal = 
+ variant {
+   completeChapter;
+   finishSession;
+   reachDailyGoal;
+   solveQuestions: nat;
+   studyMinutes: nat;
+ };
+type Quest = 
+ record {
+   active: bool;
+   createdAt: Timestamp;
+   description: text;
+   goal: QuestGoal;
+   id: Id;
+   title: text;
+   xpReward: Xp;
+ };
+type Purchase = 
+ record {
+   id: Id;
+   itemId: Id;
+   owner: UserId;
+   purchasedAt: Timestamp;
+   xpSpent: Xp;
+ };
+type ProfileView = 
+ record {
+   avatarItemId: opt Id;
+   displayName: text;
+   frameItemId: opt Id;
+   id: UserId;
+   level: Level;
+   username: text;
+   xp: Xp;
+ };
+type Profile = 
+ record {
+   appliedThemeId: Id;
+   avatarItemId: opt Id;
+   bio: text;
+   createdAt: Timestamp;
+   displayName: text;
+   frameItemId: opt Id;
+   id: UserId;
+   level: Level;
+   updatedAt: Timestamp;
+   username: text;
+   xp: Xp;
+ };
+type PlatformAnalytics = 
+ record {
+   activeMemberships: nat;
+   activeStudentsToday: nat;
+   totalPurchases: nat;
+   totalQuests: nat;
+   totalResources: nat;
+   totalStudents: nat;
+   totalStudyMinutes: nat;
+   totalXpAwarded: Xp;
+ };
+type PlanTier = 
+ variant {
+   advanced;
+   moderate;
+   ultimate;
+ };
+type Plan = 
+ record {
+   benefits: vec text;
+   name: text;
+   priceRupees: Rupees;
+   tier: PlanTier;
+   xpMultiplier: nat;
+ };
+type PaymentStatus = 
+ variant {
+   failed;
+   pending;
+   verified;
+ };
+type MembershipView = 
+ record {
+   active: bool;
+   expiresAt: opt Timestamp;
+   tier: opt PlanTier;
+   xpMultiplier: nat;
+ };
+type Level = nat;
+type LeaderboardScope = 
+ variant {
+   friends;
+   global;
+   monthly;
+   weekly;
+ };
+type LeaderboardEntry = 
+ record {
+   avatarItemId: opt Id;
+   displayName: text;
+   frameItemId: opt Id;
+   level: Level;
+   rank: nat;
+   student: UserId;
+   username: text;
+   xp: Xp;
+ };
+type Id = nat;
+type ExternalBlob = blob;
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type DayKey = text;
+type Dashboard = 
+ record {
+   goal: StudyGoal;
+   levelProgressPercent: nat;
+   profile: Profile;
+   studyMinutesThisWeek: nat;
+   studyMinutesToday: nat;
+   xpThisWeek: Xp;
+   xpToNextLevel: Xp;
+   xpToday: Xp;
+ };
+type DailyStudyTotal = 
+ record {
+   dayKey: DayKey;
+   minutes: nat;
+   xp: Xp;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type AchievementView = 
+ record {
+   achievement: Achievement;
+   earned: bool;
+   earnedAt: opt Timestamp;
+ };
+type AchievementKey = 
+ variant {
+   firstStudySession;
+   fiveHourLearner;
+   questMaster;
+   sevenDayStreak;
+   thirtyDayStreak;
+   xpChampion;
+ };
+type Achievement = 
+ record {
+   description: text;
+   key: AchievementKey;
+   title: text;
+   xpReward: Xp;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  /// Add a friend for the caller.
+  addFriend: (friend: UserId) -> ();
+  /// Add a website link (admin).
+  adminAddWebsiteLink: (name: text, description: text, url: text, category:
+   text) -> (WebsiteLink);
+  /// Clear a student's leaderboard flag (admin).
+  adminClearStudentFlag: (student: UserId) -> ();
+  /// Create a quest (admin).
+  adminCreateQuest: (title: text, description: text, goal: QuestGoal,
+   xpReward: Xp) -> (Quest);
+  /// Upload a library resource (admin).
+  adminCreateResource: (title: text, description: text, category: text,
+   subject: text, classLevel: text, board: text, file: blob, fileName:
+   text) -> (ResourceView);
+  /// Create a store item (admin).
+  adminCreateStoreItem: (name: text, description: text, kind: StoreItemKind,
+   xpPrice: Xp) -> (StoreItem);
+  /// Create a theme (admin).
+  adminCreateTheme: (name: text, description: text, premium: bool,
+   cssVariables: text) -> (Theme);
+  /// Delete a quest (admin).
+  adminDeleteQuest: (questId: Id) -> ();
+  /// Delete a resource (admin).
+  adminDeleteResource: (resourceId: Id) -> ();
+  /// Delete a store item (admin).
+  adminDeleteStoreItem: (itemId: Id) -> ();
+  /// Delete a theme (admin).
+  adminDeleteTheme: (themeId: Id) -> ();
+  /// Flag a student's leaderboard entry (admin).
+  adminFlagStudent: (student: UserId) -> ();
+  /// Platform analytics (admin).
+  adminGetAnalytics: () -> (PlatformAnalytics) query;
+  /// List all students (admin).
+  adminListStudents: () -> (vec StudentSummary) query;
+  /// Remove a student (admin).
+  adminRemoveStudent: (student: UserId) -> ();
+  /// Remove a website link (admin).
+  adminRemoveWebsiteLink: (linkId: Id) -> ();
+  /// Grant or revoke a membership (admin).
+  adminSetMembership: (student: UserId, tier: PlanTier, expiresAt:
+   Timestamp) -> (Subscription);
+  /// Update a quest (admin).
+  adminUpdateQuest: (questId: Id, title: text, description: text, goal:
+   QuestGoal, xpReward: Xp, active: bool) -> (Quest);
+  /// Update a resource's metadata (admin).
+  adminUpdateResource: (resourceId: Id, title: text, description: text,
+   category: text, subject: text, classLevel: text, board: text) ->
+   (ResourceView);
+  /// Update a store item (admin).
+  adminUpdateStoreItem: (itemId: Id, name: text, description: text, kind:
+   StoreItemKind, xpPrice: Xp, active: bool) -> (StoreItem);
+  /// Update a theme (admin).
+  adminUpdateTheme: (themeId: Id, name: text, description: text, premium:
+   bool, cssVariables: text) -> (Theme);
+  /// Apply a theme the caller may use.
+  applyTheme: (themeId: Id) -> (Theme);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  /// Begin a membership purchase; benefits stay inactive until verified.
+  beginMembershipPurchase: (tier: PlanTier, paymentReference: text) ->
+   (Subscription);
+  /// Claim a completed quest's XP reward.
+  claimQuestReward: (questId: Id) -> (Xp);
+  /// Create the caller's profile on first sign-in.
+  createProfile: (username: text, displayName: text) -> (Profile);
+  execute: (qJson: text) -> (Result) query;
+  /// Finish a session; XP is derived from server-measured elapsed time,
+  /// credited to the profile with the active membership multiplier, and
+  /// reflected in the streak, quest progress and achievements.
+  finishStudySession: (sessionId: Id) -> (StudySessionView);
+  getApiDoc: () -> (text) query;
+  /// Fetch the caller's own profile.
+  getCallerProfile: () -> (opt Profile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  /// The caller's study report for a day.
+  getDailyReport: (dayKey: DayKey) -> (StudyReport) query;
+  /// Read the caller's dashboard summary.
+  getDashboard: () -> (Dashboard) query;
+  /// Read the caller's goal and streak state.
+  getGoal: () -> (StudyGoal) query;
+  /// Fetch a ranked leaderboard for the requested scope.
+  /// Global ranks by total XP; weekly and monthly rank by XP earned in the
+  /// current week or month from real session and quest data.
+  getLeaderboard: (scope: LeaderboardScope, limit: nat) ->
+   (vec LeaderboardEntry) query;
+  /// The caller's membership state.
+  getMembership: () -> (MembershipView) query;
+  /// Fetch any student's public profile.
+  getProfile: (student: UserId) -> (opt ProfileView) query;
+  /// The caller's purchase history.
+  getPurchaseHistory: () -> (vec Purchase) query;
+  /// Fetch one resource.
+  getResource: (resourceId: Id) -> (opt ResourceView) query;
+  /// The caller's per-day totals for a week.
+  getWeekDailyTotals: (weekKey: WeekKey) -> (vec DailyStudyTotal) query;
+  /// The caller's study report for a week.
+  getWeeklyReport: (weekKey: WeekKey) -> (StudyReport) query;
+  isCallerAdmin: () -> (bool) query;
+  /// List the achievement catalogue with the caller's earned state.
+  listAchievements: () -> (vec AchievementView) query;
+  /// List today's quests with the caller's progress.
+  listDailyQuests: () -> (vec QuestView) query;
+  /// The available membership plans.
+  listMembershipPlans: () -> (vec Plan) query;
+  /// List store items with the caller's ownership.
+  listStoreItems: () -> (vec StoreItemView) query;
+  /// List the caller's study sessions.
+  listStudySessions: () -> (vec StudySessionView) query;
+  /// List themes with the caller's unlock and applied state.
+  listThemes: () -> (vec ThemeView) query;
+  /// List all website links.
+  listWebsiteLinks: () -> (vec WebsiteLink) query;
+  /// Pause a running session.
+  pauseStudySession: (sessionId: Id) -> (StudySessionView);
+  /// Purchase an item with XP.
+  purchaseStoreItem: (itemId: Id) -> (Purchase);
+  /// Record a resource download.
+  recordResourceDownload: (resourceId: Id) -> (nat);
+  /// Remove a friend for the caller.
+  removeFriend: (friend: UserId) -> ();
+  /// Resume a paused session.
+  resumeStudySession: (sessionId: Id) -> (StudySessionView);
+  schema: () -> (text) query;
+  /// Search and filter library resources.
+  searchResources: (filter: ResourceFilter) -> (vec ResourceView) query;
+  /// Set the caller's daily study goal in minutes.
+  setDailyGoal: (dailyGoalMinutes: nat) -> (StudyGoal);
+  /// Start a new study session.
+  startStudySession: (subject: text) -> (StudySessionView);
+  /// Update the caller's profile.
+  updateProfile: (displayName: text, bio: text) -> (Profile);
+  /// Verify a payment and activate benefits.
+  verifyMembershipPayment: (paymentReference: text) -> (Subscription);
+}

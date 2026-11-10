@@ -1,0 +1,460 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type AchievementKey__752289655 =
+  {
+    #firstStudySession;
+    #fiveHourLearner;
+    #questMaster;
+    #sevenDayStreak;
+    #thirtyDayStreak;
+    #xpChampion
+  };
+type AchievementKey__954127196 =
+  {
+    #firstStudySession;
+    #fiveHourLearner;
+    #questMaster;
+    #sevenDayStreak;
+    #thirtyDayStreak;
+    #xpChampion
+  };
+type Counters__138551672 =
+  {
+    var nextItemId : Nat;
+    var nextLinkId : Nat;
+    var nextPurchaseId : Nat;
+    var nextQuestId : Nat;
+    var nextResourceId : Nat;
+    var nextSessionId : Nat;
+    var nextThemeId : Nat
+  };
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type Data__846125122<T> = {var count : Nat__227979830; elements : [var ?T]};
+type DayKey__453116133 = Text;
+type EarnedAchievement__682727079 =
+  {
+    earnedAt : Timestamp__301639476;
+    key : AchievementKey__954127196;
+    owner : UserId__158757552
+  };
+type EarnedAchievement__81296083 =
+  {earnedAt : Int; key : AchievementKey__752289655; owner : Principal};
+type ExternalBlob__220559234 = Blob;
+type Id__389469852 = Nat;
+type Internal__23036296<T> =
+  {children : [var ?Node__620761243<T>]; data : Data__846125122<T>};
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type Leaf__948582970<T> = {data : Data__846125122<T>};
+type Level__1063584005 = Nat;
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__769816496 =
+  {
+    accessControlState : AccessControlState__201339279;
+    counters : Counters__138551672;
+    earnedAchievements : Map__230067015<Text, EarnedAchievement__81296083>;
+    flaggedStudents : Set__70493310<Principal>;
+    friends : Map__230067015<Principal, Set__70493310<Principal>>;
+    goals : Map__230067015<Principal, StudyGoal__56026921>;
+    profiles : Map__230067015<Principal, Profile__529753200>;
+    purchases : Map__230067015<Nat, Purchase__590537000>;
+    questProgress : Map__230067015<Text, QuestProgress__634337229>;
+    quests : Map__230067015<Nat, Quest__231843109>;
+    resources : Map__230067015<Nat, Resource__62398376>;
+    sessions : Map__230067015<Nat, StudySession__394585889>;
+    storeItems : Map__230067015<Nat, StoreItem__389856104>;
+    students : Map__230067015<Principal, StudentSummary__944401424>;
+    subscriptions : Map__230067015<Principal, Subscription__628920832>;
+    themes : Map__230067015<Nat, Theme__999849014>;
+    websiteLinks : Map__230067015<Nat, WebsiteLink__162981651>
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type Node__620761243<T> =
+  {#internal : Internal__23036296<T>; #leaf : Leaf__948582970<T>};
+type OldActor__512397517 = {};
+type PaymentStatus__803651464 = {#failed; #pending; #verified};
+type PaymentStatus__838381444 = {#failed; #pending; #verified};
+type PlanTier__1028552155 = {#advanced; #moderate; #ultimate};
+type PlanTier__154776761 = {#advanced; #moderate; #ultimate};
+type Profile__469549097 =
+  {
+    appliedThemeId : Id__389469852;
+    avatarItemId : ?Id__389469852;
+    bio : Text;
+    createdAt : Timestamp__301639476;
+    displayName : Text;
+    frameItemId : ?Id__389469852;
+    id : UserId__158757552;
+    level : Level__1063584005;
+    updatedAt : Timestamp__301639476;
+    username : Text;
+    xp : Xp__877759886
+  };
+type Profile__529753200 =
+  {
+    appliedThemeId : Nat;
+    avatarItemId : ?Nat;
+    bio : Text;
+    createdAt : Int;
+    displayName : Text;
+    frameItemId : ?Nat;
+    id : Principal;
+    level : Nat;
+    updatedAt : Int;
+    username : Text;
+    xp : Nat
+  };
+type Purchase__580287362 =
+  {
+    id : Id__389469852;
+    itemId : Id__389469852;
+    owner : UserId__158757552;
+    purchasedAt : Timestamp__301639476;
+    xpSpent : Xp__877759886
+  };
+type Purchase__590537000 =
+  {
+    id : Nat;
+    itemId : Nat;
+    owner : Principal;
+    purchasedAt : Int;
+    xpSpent : Nat
+  };
+type QuestGoal__336160950 =
+  {
+    #completeChapter;
+    #finishSession;
+    #reachDailyGoal;
+    #solveQuestions : Nat;
+    #studyMinutes : Nat
+  };
+type QuestGoal__842462678 =
+  {
+    #completeChapter;
+    #finishSession;
+    #reachDailyGoal;
+    #solveQuestions : Nat;
+    #studyMinutes : Nat
+  };
+type QuestProgress__634337229 =
+  {
+    claimed : Bool;
+    completed : Bool;
+    dayKey : Text;
+    owner : Principal;
+    progress : Nat;
+    questId : Nat;
+    target : Nat
+  };
+type QuestProgress__697568346 =
+  {
+    claimed : Bool;
+    completed : Bool;
+    dayKey : DayKey__453116133;
+    owner : UserId__158757552;
+    progress : Nat;
+    questId : Id__389469852;
+    target : Nat
+  };
+type Quest__231843109 =
+  {
+    active : Bool;
+    createdAt : Int;
+    description : Text;
+    goal : QuestGoal__336160950;
+    id : Nat;
+    title : Text;
+    xpReward : Nat
+  };
+type Quest__329869683 =
+  {
+    active : Bool;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    goal : QuestGoal__842462678;
+    id : Id__389469852;
+    title : Text;
+    xpReward : Xp__877759886
+  };
+type Resource__250843648 =
+  {
+    board : Text;
+    category : Text;
+    classLevel : Text;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    downloadCount : Nat;
+    file : ExternalBlob__220559234;
+    fileName : Text;
+    id : Id__389469852;
+    subject : Text;
+    title : Text
+  };
+type Resource__62398376 =
+  {
+    board : Text;
+    category : Text;
+    classLevel : Text;
+    createdAt : Int;
+    description : Text;
+    downloadCount : Nat;
+    file : Blob;
+    fileName : Text;
+    id : Nat;
+    subject : Text;
+    title : Text
+  };
+type SessionStatus__594629249 = {#finished; #paused; #running};
+type SessionStatus__968215329 = {#finished; #paused; #running};
+type Set__1053317950<T> =
+  {var root : Node__620761243<T>; var size : Nat__227979830};
+type Set__70493310<T> = Set__1053317950<T>;
+type StoreItemKind__730628788 =
+  {#avatar; #badge; #dashboardTheme; #digitalReward; #frame; #resource};
+type StoreItemKind__837187640 =
+  {#avatar; #badge; #dashboardTheme; #digitalReward; #frame; #resource};
+type StoreItem__389856104 =
+  {
+    active : Bool;
+    createdAt : Int;
+    description : Text;
+    id : Nat;
+    kind : StoreItemKind__730628788;
+    name : Text;
+    xpPrice : Nat
+  };
+type StoreItem__691247882 =
+  {
+    active : Bool;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    id : Id__389469852;
+    kind : StoreItemKind__837187640;
+    name : Text;
+    xpPrice : Xp__877759886
+  };
+type StudentSummary__330304920 =
+  {
+    createdAt : Timestamp__301639476;
+    displayName : Text;
+    id : UserId__158757552;
+    level : Level__1063584005;
+    membershipTier : ?Text;
+    username : Text;
+    xp : Xp__877759886
+  };
+type StudentSummary__944401424 =
+  {
+    createdAt : Int;
+    displayName : Text;
+    id : Principal;
+    level : Nat;
+    membershipTier : ?Text;
+    username : Text;
+    xp : Nat
+  };
+type StudyGoal__56026921 =
+  {
+    currentStreakDays : Nat;
+    dailyGoalMinutes : Nat;
+    lastStudyDay : ?Text;
+    longestStreakDays : Nat
+  };
+type StudyGoal__747368634 =
+  {
+    currentStreakDays : Nat;
+    dailyGoalMinutes : Nat;
+    lastStudyDay : ?DayKey__453116133;
+    longestStreakDays : Nat
+  };
+type StudySession__394585889 =
+  {
+    accumulatedSeconds : Nat;
+    dayKey : Text;
+    finishedAt : ?Int;
+    id : Nat;
+    lastResumedAt : ?Int;
+    owner : Principal;
+    rewardedXp : ?Nat;
+    startedAt : Int;
+    status : SessionStatus__968215329;
+    subject : Text
+  };
+type StudySession__979283094 =
+  {
+    accumulatedSeconds : Nat;
+    dayKey : DayKey__453116133;
+    finishedAt : ?Timestamp__301639476;
+    id : Id__389469852;
+    lastResumedAt : ?Timestamp__301639476;
+    owner : UserId__158757552;
+    rewardedXp : ?Xp__877759886;
+    startedAt : Timestamp__301639476;
+    status : SessionStatus__594629249;
+    subject : Text
+  };
+type Subscription__246366964 =
+  {
+    expiresAt : ?Timestamp__301639476;
+    owner : UserId__158757552;
+    paymentReference : ?Text;
+    startedAt : ?Timestamp__301639476;
+    status : PaymentStatus__803651464;
+    tier : PlanTier__1028552155
+  };
+type Subscription__628920832 =
+  {
+    expiresAt : ?Int;
+    owner : Principal;
+    paymentReference : ?Text;
+    startedAt : ?Int;
+    status : PaymentStatus__838381444;
+    tier : PlanTier__154776761
+  };
+type Theme__521544159 =
+  {
+    createdAt : Timestamp__301639476;
+    cssVariables : Text;
+    description : Text;
+    id : Id__389469852;
+    name : Text;
+    premium : Bool
+  };
+type Theme__999849014 =
+  {
+    createdAt : Int;
+    cssVariables : Text;
+    description : Text;
+    id : Nat;
+    name : Text;
+    premium : Bool
+  };
+type Timestamp__301639476 = Int;
+type UserId__158757552 = Principal;
+type UserRole__91647283 = {#admin; #guest; #user};
+type WebsiteLink__162981651 =
+  {
+    category : Text;
+    createdAt : Int;
+    description : Text;
+    id : Nat;
+    name : Text;
+    url : Text
+  };
+type WebsiteLink__530185126 =
+  {
+    category : Text;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    id : Id__389469852;
+    name : Text;
+    url : Text
+  };
+type Xp__877759886 = Nat;
+{
+  "00000000_000000" : OldActor__512397517 -> NewActor__769816496
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable counters :
+    {
+      var nextItemId : Nat;
+      var nextLinkId : Nat;
+      var nextPurchaseId : Nat;
+      var nextQuestId : Nat;
+      var nextResourceId : Nat;
+      var nextSessionId : Nat;
+      var nextThemeId : Nat
+    };
+  stable earnedAchievements :
+    {
+      var root : Node__204828119<Text, EarnedAchievement__682727079>;
+      var size : Nat__227979830
+    };
+  stable flaggedStudents :
+    {
+      var root : Node__620761243<UserId__158757552>;
+      var size : Nat__227979830
+    };
+  stable friends :
+    {
+      var root :
+        Node__204828119<UserId__158757552, Set__70493310<UserId__158757552>>;
+      var size : Nat__227979830
+    };
+  stable goals :
+    {
+      var root : Node__204828119<UserId__158757552, StudyGoal__747368634>;
+      var size : Nat__227979830
+    };
+  stable profiles :
+    {
+      var root : Node__204828119<UserId__158757552, Profile__469549097>;
+      var size : Nat__227979830
+    };
+  stable purchases :
+    {
+      var root : Node__204828119<Id__389469852, Purchase__580287362>;
+      var size : Nat__227979830
+    };
+  stable questProgress :
+    {
+      var root : Node__204828119<Text, QuestProgress__697568346>;
+      var size : Nat__227979830
+    };
+  stable quests :
+    {
+      var root : Node__204828119<Id__389469852, Quest__329869683>;
+      var size : Nat__227979830
+    };
+  stable resources :
+    {
+      var root : Node__204828119<Id__389469852, Resource__250843648>;
+      var size : Nat__227979830
+    };
+  stable sessions :
+    {
+      var root : Node__204828119<Id__389469852, StudySession__979283094>;
+      var size : Nat__227979830
+    };
+  stable storeItems :
+    {
+      var root : Node__204828119<Id__389469852, StoreItem__691247882>;
+      var size : Nat__227979830
+    };
+  stable students :
+    {
+      var root : Node__204828119<UserId__158757552, StudentSummary__330304920>;
+      var size : Nat__227979830
+    };
+  stable subscriptions :
+    {
+      var root : Node__204828119<UserId__158757552, Subscription__246366964>;
+      var size : Nat__227979830
+    };
+  stable themes :
+    {
+      var root : Node__204828119<Id__389469852, Theme__521544159>;
+      var size : Nat__227979830
+    };
+  stable websiteLinks :
+    {
+      var root : Node__204828119<Id__389469852, WebsiteLink__530185126>;
+      var size : Nat__227979830
+    }
+};
